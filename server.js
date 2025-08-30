@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 
 // mongoose.connect(dbconfig.DB_URL);
-const mongo_ATLAS_URL="mongodb+srv://debayonmallik9932_db_user:z5D3qowA0ibxuoOu@clusterhms.fm4t3bs.mongodb.net/hms?retryWrites=true&w=majority";
+const mongo_ATLAS_URL="mongodb+srv://debayonmallik9932_db_user:z5D3qowA0ibxuoOu@clusterhms.fm4t3bs.mongodb.net/?retryWrites=true&w=majority&appName=ClusterHMS"
 mongoose.connect(mongo_ATLAS_URL).then(()=>{console.log("connected to DB")}).catch((error)=>{console.log("CAN'T CONNECT TO DBS",error)});
 const db=mongoose.connection;
 
