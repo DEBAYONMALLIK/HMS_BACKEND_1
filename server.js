@@ -98,4 +98,6 @@ appointmentRoutes.appoint_rout(app);
 prescriptionRoutes(app);
 medicalRecrodsRoute(app);
 
-app.listen(serverport.PORT,()=>{console.log("server has started at",serverport.PORT)});
+const port=process.env.PORT || 8080;
+
+app.listen(port,()=>{console.log("server has started at",port)});
