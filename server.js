@@ -24,7 +24,7 @@ const serverport=require("./configs/port.config.js");
 const app=express();
 const bcryptjs=require("bcryptjs");
 app.use(cors({
-  origin:"http://localhost:5173",   // frontend origin
+  origin:"https://hms-frontend-1.vercel.app/",   // frontend origin
   credentials: true
 }));
 app.use(express.json());
