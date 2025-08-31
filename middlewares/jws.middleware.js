@@ -11,6 +11,10 @@ function verifyToken(req,res,next){
 // now it will work both wuit header and cookies 
   let token = req.headers["authorization"];
 
+    if (token && token.startsWith("Bearer ")) {
+    token = token.slice(7); // remove "Bearer "
+  }
+
   // If not found, check in cookies
   if (!token && req.cookies) {
     token = req.cookies.token;

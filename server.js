@@ -23,9 +23,14 @@ require('dotenv').config(); // this will read the .env file and populate process
 const serverport=require("./configs/port.config.js");
 const app=express();
 const bcryptjs=require("bcryptjs");
+
+url_prod= "https://hms-frontend-1.vercel.app" 
+url_dev='http://localhost:5173'
+//   
 app.use(cors({
-  origin:"https://hms-frontend-1.vercel.app",   // frontend origin
+  origin:url_prod,   // frontend origin
   credentials: true
+  
 }));
 app.use(express.json());
 app.use(cookieParser());

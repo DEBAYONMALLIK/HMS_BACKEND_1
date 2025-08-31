@@ -61,13 +61,13 @@ async function signin(req,res){
          {expiresIn:validity_time}
       );
 
-   const cookieOptions = {
-   maxAge: 24 * 60 * 60 * 1000, // 1 day
-   httpOnly: true,
-   secure: false,   
-           
-          
-   };
+const cookieOptions = {
+  maxAge: 24 * 60 * 60 * 1000,
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", 
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
+};
+
 
       res.cookie("token",token,cookieOptions);
 
@@ -98,12 +98,14 @@ async function signin(req,res){
 
   async function logout(req,res){
    // just clear the cookes
-  res.cookie("token","", {
-    httpOnly: true,
-    maxAge: 0, 
-    secure: false,   
-          
-  });
+   
+res.cookie("token", "", {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  expires: new Date(0)   // clear immediately
+});
+
    res.status(200).json({
       success:true,
       message:"User logged out successfully"
